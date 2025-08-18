@@ -1,6 +1,6 @@
 # log files
 APT_LOG_FILE="/var/log/apt.log"
-CLEANUP_LOG_FILE="/var/log/cleanup.log"
+CLEANUP_LOG_FILE="/var/log/cleaning.log"
 
 # ensure log file directories exists
 sudo mkdir -p "$(dirname "$CLEANUP_LOG_FILE")"

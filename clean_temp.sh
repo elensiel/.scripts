@@ -1,4 +1,4 @@
-CLEANUP_LOG_FILE="/var/log/cleanup.log"
+CLEANUP_LOG_FILE="/var/log/cleaning.log"
 
 mkdir -p "$(dirname "$CLEANUP_LOG_FILE")"
 
