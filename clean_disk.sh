@@ -1,10 +1,8 @@
 # log files
-APT_LOG_FILE="/var/log/apt.log"
 CLEANUP_LOG_FILE="/var/log/cleaning.log"
 
 # ensure log file directories exists
 sudo mkdir -p "$(dirname "$CLEANUP_LOG_FILE")"
-sudo mkdir -p "$(dirname "$APT_LOG_FILE")"
 
 CURRENT_TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
@@ -20,8 +18,8 @@ fi
 echo "$CURRENT_TIMESTAMP : Starting system cleanup..." | tee -a "$CLEANUP_LOG_FILE"
 
 # APT package cleanup
-sudo apt clean >>"$APT_LOG_FILE" 2>&1
-sudo apt autoclean >>"$APT_LOG_FILE" 2>&1
+sudo apt clean 
+sudo apt autoclean 
 
 # Cleaning tmp
 echo "$CURRENT_TIMESTAMP : Deleting temporary files..." | tee -a "$CLEANUP_LOG_FILE"
