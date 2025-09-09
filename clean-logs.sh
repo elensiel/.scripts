@@ -1,8 +1,18 @@
-CLEANUP_LOG_FILE="/var/log/cleaning.log"
+source ./constants.sh
 
-mkdir -p "$(dirname "$CLEANUP_LOG_FILE")"
+# ===== FILE PATHS ======
+XSESSION="$HOME_DIR/.xsession-errors"
+BASH_HISTORY="$HOME_DIR/.bash_history"
 
-sudo rm "/home/elensiel/.bash_history" >> "$CLEANUP_LOG_FILE" 2>&1
-sudo find /var/log/ -type f -regextype egrep -iregex '.*\.(log|l|gz|old)$' -delete >> "$CLEANUP_LOG_FILE" 2>&1
+FILE_SIZE_THRESHOLD=$((100 * 1024 * 1024)) # 100MB
 
-echo "$(date '+%Y-%m-%d %H:%M:%S') : Log and history cleanup complete." | sudo tee -a "$CLEANUP_LOG_FILE"
+# truncate instead of deleting
+[ "$(stat -c %s "$XSESSION")" -gt "$FILE_SIZE_THRESHOLD" ] && > "$XSESSION"
+[ "$(stat -c %s "$BASH_HISTORY")" -gt "$FILE_SIZE_THRESHOLD" ] && > "$BASH_HISTORY"
+sudo find "$LOG_DIR" -type f -name "*.log" -size +"$((FILE_SIZE_THRESHOLD/1024/1024))M" -exec truncate -s 0 {} \;
+
+# delete logrotate/compressed ones
+sudo find "$LOG_DIR" -type f \( -name "*.gz" -name "*.old" -name "*.1" \) -delete
+
+sudo journalctl --vacuum-size="$((FILE_SIZE_THRESHOLD/1024/1024))M"
+
