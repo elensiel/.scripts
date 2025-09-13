@@ -1,1 +1,1 @@
-get_timestamp() { $(data '+%Y-%m-%d %H:%M:%S'); }
+get_timestamp() { date '+%Y-%m-%d %H:%M:%S'; }
