@@ -32,7 +32,7 @@
     "save_file": "",
     "filter_results": true,
     "album_type": null,
-    "threads": 6,
+    "threads": 4,
     "cookie_file": null,
     "restrict": "strict",
     "print_errors": false,

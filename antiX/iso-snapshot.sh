@@ -9,7 +9,6 @@ COMPRESSION="xz"
 get_timestamp > "$LOG_FILE" 2>&1
 
 # del existing first to avoid returning error
-# sudo rm -rf "$DIRECTORY/snapshot/*"
 sudo find "$DIRECTORY/snapshot" -type f -delete
 
 sudo iso-snapshot -d "$DIRECTORY" -f "$FILENAME" -z "$COMPRESSION" >> "$LOG_FILE" 2>&1
