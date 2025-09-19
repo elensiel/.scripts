@@ -1,6 +1,6 @@
-source ./constants.sh
+source /home/$USER/.scripts/constants.sh
 
-OUTPUT_DIR="$HOME_DIR/Shared/Music/spotdl"
+OUTPUT_DIR="$HOME_DIR/shared/music/spotdl"
 
 # just for version checking
 echo -e "\e[32mCurrent version\e[0m"

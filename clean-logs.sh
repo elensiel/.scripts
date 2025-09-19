@@ -1,4 +1,4 @@
-source ./constants.sh
+source /home/$USER/.scripts/constants.sh
 
 # ===== FILE PATHS ======
 XSESSION="$HOME_DIR/.xsession-errors"

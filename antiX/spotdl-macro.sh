@@ -2,7 +2,7 @@
 # poor decision on partitioning
 # and tinatamad pako mag reinstall
 
-source ./constants.sh
+source /home/$USER/.scripts/constants.sh
 
 # just for version checking
 echo -e "\e[32mCurrent version\e[0m"

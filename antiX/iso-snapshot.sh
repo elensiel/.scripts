@@ -1,5 +1,5 @@
-source ../constants.sh
-source ../helper.sh
+source /home/$USER/.scripts/constants.sh
+source /home/$USER/.scripts/helper.sh
 
 LOG_FILE="$LOG_DIR/iso-snapshot.log"
 DIRECTORY="/srv"
