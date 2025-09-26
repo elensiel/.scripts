@@ -21,4 +21,4 @@ echo "-----> Deleted from Trash... <-----" | sudo tee -a "$LOG_FILE" 2>&1
 ls -a "$HOME_DIR/.local/share/Trash/files" | sudo tee -a "$LOG_FILE" 2>&1
 rm -rf "$HOME_DIR/.local/share/Trash/files/"*
 
-echo "===== $(get_timestamp) : END of Cleaning. =====" | sudo tee -a "$LOG_FILE" 2>&1
+echo -e "===== $(get_timestamp) : END of Cleaning. =====\n" | sudo tee -a "$LOG_FILE" 2>&1
