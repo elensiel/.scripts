@@ -18,7 +18,6 @@ find "$HOME_DIR/.cache" -type f -print -delete
 # trash is trash
 echo '' | sudo tee -a "$LOG_FILE" 2>&1
 echo "-----> Deleted from Trash... <-----" | sudo tee -a "$LOG_FILE" 2>&1
-ls -a "$HOME_DIR/.local/share/Trash/files" | sudo tee -a "$LOG_FILE" 2>&1
-rm -rf "$HOME_DIR/.local/share/Trash/files/"*
+rm -vrf "$HOME_DIR/.local/share/Trash/files/"* | sudo tee -a "$LOG_FILE" 2>&1
 
 echo -e "===== $(get_timestamp) : END of Cleaning. =====\n" | sudo tee -a "$LOG_FILE" 2>&1
