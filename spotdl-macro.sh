@@ -11,10 +11,11 @@ spotdl --version
 echo -e "\e[32mChecking for updates\e[0m"
 spotdl --check-for-updates
 
+echo -e "\e[32mSetting up SpotDL config\e[0m"
 # ensure directories bfr proceeding
-mkdir -p "$OUTPUT_DIR"
+mkdir -vp "$OUTPUT_DIR"
 # overwrite config since spotdl doesn't have a command for it 
-cp -f "$HOME_DIR/.scripts/config/spotdl-config.json" "$HOME_DIR/.spotdl/config.json"
+cp -vf "$HOME_DIR/.scripts/config/spotdl-config.json" "$HOME_DIR/.spotdl/config.json"
 
 spotdl sync \
     "https://open.spotify.com/playlist/5gz9xQFbxnDqMpRTzKjKUI?si=e79d9c3f704e4017" \
