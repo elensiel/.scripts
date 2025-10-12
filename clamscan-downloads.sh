@@ -1,6 +1,6 @@
 source /home/$USER/.scripts/constants.sh
 
 QUARANTINE_DIR="$HOME_DIR/.local/share/Trash/files"
-mkdir -p QUARANTINE_DIR
+mkdir -pv "$QUARANTINE_DIR"
 
 sudo clamscan -r "$HOME_DIR/Downloads" --quiet --move="$QUARANTINE_DIR" --log="$LOG_DIR/clamscan.log"

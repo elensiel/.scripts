@@ -3,7 +3,7 @@ source /home/$USER/.scripts/constants.sh
 
 install_dependencies() {
     sudo apt update
-    sudo apt install -y clamav pipx ffmpeg git || { echo "Failed to install required package." >&2; exit 1; }
+    sudo apt install -y clamav pipx ffmpeg || { echo "Failed to install required package." >&2; exit 1; }
 
     pipx ensurepath && pipx install spotdl || { echo "Failed to install required package." >&2; exit 1; }
 }
