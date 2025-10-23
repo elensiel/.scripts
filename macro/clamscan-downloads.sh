@@ -1,4 +1,4 @@
-source /home/$USER/.scripts/constants.sh
+source /home/$USER/.scripts/core/constants.sh
 
 QUARANTINE_DIR="$HOME_DIR/.local/share/Trash/files"
 mkdir -pv "$QUARANTINE_DIR"

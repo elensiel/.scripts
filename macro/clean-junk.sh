@@ -1,5 +1,5 @@
-source /home/$USER/.scripts/constants.sh
-source /home/$USER/.scripts/helper.sh
+source /home/$USER/.scripts/core/constants.sh
+source /home/$USER/.scripts/core/helper.sh
 
 LOG_FILE="$LOG_DIR/clean.log"
 

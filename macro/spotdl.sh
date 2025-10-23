@@ -1,4 +1,4 @@
-source /home/$USER/.scripts/constants.sh
+source /home/$USER/.scripts/core/constants.sh
 
 OUTPUT_DIR="$HOME_DIR/shared/music/spotdl"
 
