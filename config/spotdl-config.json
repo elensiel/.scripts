@@ -40,7 +40,7 @@
     "preload": true,
     "archive": null,
     "load_config": true,
-    "log_level": "INFO",
+    "log_level": "DEBUG",
     "simple_tui": true,
     "fetch_albums": false,
     "id3_separator": "/",
