@@ -35,7 +35,7 @@
     "threads": 16,
     "cookie_file": null,
     "restrict": "strict",
-    "print_errors": false,
+    "print_errors": true,
     "sponsor_block": true,
     "preload": true,
     "archive": null,
