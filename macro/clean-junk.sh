@@ -1,23 +1,31 @@
-source /home/$USER/.scripts/core/constants.sh
-source /home/$USER/.scripts/core/helper.sh
+#!/bin/bash
 
-LOG_FILE="$LOG_DIR/clean.log"
+source ../lib/path.sh
+source ../lib/time.sh
 
-echo "===== $(get_timestamp) : START of Cleaning. =====" | sudo tee -a "$LOG_FILE" 2>&1
+# ensure log directory
+mkdir -pv "$LOG_DIR"
+LOG_FILE="$LOG_DIR/clean-junk.log"
+CACHE_DIR="$HOME_DIR/.cache"
 
-# del unused dir first which are most likely removed programs
-echo '' | sudo tee -a "$LOG_FILE" 2>&1
-echo "-----> Removed empty cache directories... <-----" | sudo tee -a "$LOG_FILE" 2>&1
-find "$HOME_DIR/.cache" -mindepth 1 -type d -empty -print -delete
+exec > >(sudo tee -a "$LOG_FILE") 2>&1
+
+echo -e "===== $(get_current_date_and_time) : START of Cleaning. =====\n"
+
+# delete empty directories first (mostly removed program cache directories)
+# we do not delete unempty directories as they can break
+# its respected program
+echo "-----> Removed empty cache directories... <-----"
+fd "$CACHE_DIR" --type dir --hidden --empty --min-depth 1 \
+    --exec-batch rmdir
 
 # then actually del cache here
-echo '' | sudo tee -a "$LOG_FILE" 2>&1
-echo "-----> Deleted cache... <-----" | sudo tee -a "$LOG_FILE" 2>&1
-find "$HOME_DIR/.cache" -type f -print -delete
+echo -e "\n-----> Deleted cache... <-----"
+fd "$CACHE_DIR" --type f \
+    --exec-batch rm
 
 # trash is trash
-echo '' | sudo tee -a "$LOG_FILE" 2>&1
-echo "-----> Deleted from Trash... <-----" | sudo tee -a "$LOG_FILE" 2>&1
-rm -vrf "$HOME_DIR/.local/share/Trash/files/"* | sudo tee -a "$LOG_FILE" 2>&1
+echo -e "\n-----> Deleted from Trash... <-----"
+rm -rfv "$HOME_DIR/.local/share/Trash/files/"*
 
-echo -e "===== $(get_timestamp) : END of Cleaning. =====\n" | sudo tee -a "$LOG_FILE" 2>&1
+echo -e "\n===== $(get_current_date_and_time) : END of Cleaning. =====\n"
