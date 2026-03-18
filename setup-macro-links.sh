@@ -8,7 +8,7 @@ install_prerequisites() {
     echo "Installing prerequisites"
 
     sudo apt-get update -qq
-    sudo apt-get install -y fd-find
+    #sudo apt-get install -y fd-find
 }
 
 create_symlink() {
@@ -26,5 +26,5 @@ create_symlink() {
     done
 }
 
-install_prerequisites
+#install_prerequisites
 create_symlink
