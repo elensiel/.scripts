@@ -14,11 +14,9 @@ install_prerequisites() {
 create_symlink() {
     echo "Creating symlinks"
 
-    local SCRIPT_DIR="$HOME_DIR/.scripts/macro"
-
     declare -A LINKS=(
-        [apt.]="$SCRIPT_DIR/apt.sh"
-        [clean.]="$SCRIPT_DIR/clean-junk.sh"
+        [apt.]="$MACRO_DIR/apt.sh"
+        [clean.]="$MACRO_DIR/clean-junk.sh"
     )
 
     for name in "${!LINKS[@]}"; do

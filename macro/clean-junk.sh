@@ -17,12 +17,12 @@ echo -e "===== $(get_current_date_and_time) : START of Cleaning. =====\n"
 # its respected program
 echo "-----> Removed empty cache directories... <-----"
 find "$CACHE_DIR" -mindepth 1 -type d -empty \
-		-print -delete
+    -print -delete
 
 # then actually del cache here
 echo -e "\n-----> Deleted cache... <-----"
-find "$CACHE_DIR" -type f \
-		-print -delete
+find "$CACHE_DIR" -mindepth 1 -type f \
+    -print -delete
 
 # trash is trash
 echo -e "\n-----> Deleted from Trash... <-----"
