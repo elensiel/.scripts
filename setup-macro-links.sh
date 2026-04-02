@@ -17,6 +17,7 @@ create_symlink() {
     declare -A LINKS=(
         [apt.]="$MACRO_DIR/apt.sh"
         [clean.]="$MACRO_DIR/clean-junk.sh"
+        [music.]="$MACRO_DIR/yt-dlp.sh"
     )
 
     for name in "${!LINKS[@]}"; do
