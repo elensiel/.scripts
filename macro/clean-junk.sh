@@ -3,8 +3,6 @@
 source "/home/$USER/.scripts/lib/path.sh"
 source "/home/$USER/.scripts/lib/time.sh"
 
-# ensure log directory
-sudo mkdir -pv "$LOG_DIR"
 LOG_FILE="$LOG_DIR/clean-junk.log"
 CACHE_DIR="$HOME_DIR/.cache"
 
