@@ -4,13 +4,6 @@ source ./lib/path.sh
 
 set -e
 
-install_prerequisites() {
-    echo "Installing prerequisites"
-
-    sudo apt-get update -qq
-    #sudo apt-get install -y fd-find
-}
-
 create_symlink() {
     echo "Creating symlinks"
 
@@ -18,6 +11,7 @@ create_symlink() {
         [apt.]="$MACRO_DIR/apt.sh"
         [clean.]="$MACRO_DIR/clean-junk.sh"
         [music.]="$MACRO_DIR/yt-dlp.sh"
+		[scan.]="$MACRO_DIR/clamscan.sh"
     )
 
     for name in "${!LINKS[@]}"; do
@@ -25,5 +19,4 @@ create_symlink() {
     done
 }
 
-#install_prerequisites
 create_symlink
