@@ -44,7 +44,7 @@ clean_dir() {
 }
 
 # ---------- main ----------
-TIME_FORMAT="$(date '+%F +%T')"
+TIME_FORMAT="$(date '+%F %T')"
 echo -e "===== $TIME_FORMAT : START of Cleaning. =====\n"
 
 print_header "Vacuumed journal logs (>$JOURNAL_MAX_AGE)..."
