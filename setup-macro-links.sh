@@ -1,8 +1,9 @@
 #!/bin/bash
 
-source ./lib/path.sh
-
 set -e
+
+SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}")"
+MACRO_DIR="$(dirname "$SCRIPT_PATH")/macro"
 
 create_symlink() {
     echo "Creating symlinks"
@@ -11,11 +12,13 @@ create_symlink() {
         [apt.]="$MACRO_DIR/apt.sh"
         [clean.]="$MACRO_DIR/clean-junk.sh"
         [music.]="$MACRO_DIR/yt-dlp.sh"
-		[scan.]="$MACRO_DIR/clamscan.sh"
+        [scan.]="$MACRO_DIR/clamscan.sh"
     )
 
     for name in "${!LINKS[@]}"; do
         sudo ln -sfv "${LINKS[$name]}" "/usr/local/bin/$name"
+
+        [[ -f "${LINKS[$name]}"]] || echo { echo "Missing: ${LINKS[$name]}" >&2; continue; }
     done
 }
 
