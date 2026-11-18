@@ -13,9 +13,11 @@ create_symlink() {
     )
 
     for name in "${!LINKS[@]}"; do
+        if [[ ! -f "${LINKS[$name]}" ]]; then
+            echo "Missing: ${LINKS[$name]}" >&2
+            continue
+        fi
         sudo ln -sfv "${LINKS[$name]}" "/usr/local/bin/$name"
-
-        [[ -f "${LINKS[$name]}"]] || echo { echo "Missing: ${LINKS[$name]}" >&2; continue; }
     done
 }
 
