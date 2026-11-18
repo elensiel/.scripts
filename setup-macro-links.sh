@@ -10,6 +10,7 @@ create_symlink() {
 
     declare -A LINKS=(
         [music.]="$MACRO_DIR/yt-dlp.sh"
+        [scan.]="$MACRO_DIR/clamscan.sh"
     )
 
     for name in "${!LINKS[@]}"; do
